@@ -8,7 +8,7 @@ spec:
   releaseName: nfs-client
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
-    name: nfs-client
+    name: nfs-client-provisioner
   values:
     nfs:
       server: "192.168.178.4"
