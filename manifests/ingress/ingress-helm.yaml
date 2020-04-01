@@ -13,6 +13,9 @@ spec:
     controller:
       service:
         type: "NodePort"
+        nodePorts:
+          http: "31125"
+          https: "30984"
       metrics:
         enabled: true
     controller:
