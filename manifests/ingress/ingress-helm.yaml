@@ -11,6 +11,8 @@ spec:
     name: nginx-ingress
   values:
     controller:
+      service:
+        type: "NodePort"
       metrics:
         enabled: true
     controller:
