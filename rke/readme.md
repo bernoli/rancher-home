@@ -1,5 +1,12 @@
 # RKE setup @home
 
+Setup:
+
+```
+rke up --config cluster.yml
+./postcluster.sh
+```
+
 ## Features
 
 - Encryption at rest (https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/) 
