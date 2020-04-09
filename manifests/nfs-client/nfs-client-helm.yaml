@@ -9,6 +9,7 @@ spec:
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: nfs-client-provisioner
+    version: 1.2.8
   values:
     nfs:
       server: "192.168.178.4"

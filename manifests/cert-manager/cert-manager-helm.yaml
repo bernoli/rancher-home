@@ -9,9 +9,10 @@ spec:
   chart:
     repository: https://charts.jetstack.io
     name: cert-manager
+    version: v0.14.2
   values:
     ingressShim:
       defaultIssuerName: "letsencrypt-prod"
       defaultIssuerKind: "ClusterIssuer"
     image:
-      tag: "v0.14.0"
+      tag: "v0.14.2"
