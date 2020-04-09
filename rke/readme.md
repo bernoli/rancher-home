@@ -7,6 +7,13 @@ rke up --config cluster.yml
 ./postcluster.sh
 ```
 
+Tear down
+
+```
+rke remove --force
+ansible "rke" -m script -a playbooks/scripts/docker-prune.sh
+```
+
 ## Features
 
 - Encryption at rest (https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/) 
