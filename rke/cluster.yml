@@ -31,7 +31,7 @@ services:
 system_images:
     kubernetes: rancher/hyperkube:v1.17.4-rancher1
 nodes:
-  - address: cloud
+  - address: cloud.stackmasters.com
     internal_address: 192.168.178.2
     user: alessandro
     role: [controlplane,etcd,worker]
