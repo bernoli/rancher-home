@@ -11,7 +11,7 @@ Tear down
 
 ```
 rke remove --force
-ansible "rke" -m script -a playbooks/scripts/docker-prune.sh
+ansible "rke" -m script -a playbooks/scripts/docker_prune.sh
 ```
 
 ## Features
