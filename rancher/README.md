@@ -9,25 +9,20 @@ This is how I run a Rancher server on a VM in azure
 4. Get Let's Encrypt certs
 
 ```
-$ sudo certbot-auto certonly --standalone -d dash.qubernetes.com  -d dash.qubernetes.com
+$ sudo rm -R /etc/letsencrypt
+$ sudo certbot-auto certonly --standalone -d  rancher.stackmasters.com -d  rancher.stackmasters.com -m alessandro.vozza@microsoft.com --agree-tos -n
 ```
 
-5. Rename cert
-
-```
-sudo cp /etc/letsencrypt/archive/dash.qubernetes.com/fullchain.pem /etc/letsencrypt/archive/dash.qubernetes.com/cert.pem
-```
-
-6. Start rancher with docker compose
+5. Start rancher with docker compose
 
 ```
 docker-compose up -d
 ```
 
-7. Update rancher by bumping the docker image version in the compose file and:
+6. Update rancher by bumping the docker image version in the compose file and:
 
 ```
 docker-compose down ; docker-compose up -d
 ```
 
-8. Make sure you backup `/root/rancher/data` or mount it off an Azure File for example.
+7. Make sure you backup `/root/rancher/data` or mount it off an Azure File for example.
