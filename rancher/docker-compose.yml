@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 services:
   rancher:
     image: "rancher/rancher:v2.4.2"
@@ -8,7 +8,16 @@ services:
     command: --no-cacerts
     restart: unless-stopped
     volumes:
-      - /etc/letsencrypt/archive/dash.qubernetes.com/:/etc/rancher/ssl/
-      - /root/rancher/data:/var/lib/rancher
+      - type: bind 
+        source: /etc/letsencrypt/archive/rancher.stackmasters.com/fullchain1.pem
+        target: /etc/rancher/ssl/cert.pem
+        read_only: true
+      - type: bind 
+        source: /etc/letsencrypt/archive/rancher.stackmasters.com/privkey1.pem
+        target: /etc/rancher/ssl/key.pem
+        read_only: true
+      - type: bind 
+        source: /root/rancher/data 
+        target: /var/lib/rancher
     environment:
       - SSL_CERT_DIR="/etc/rancher/ssl

@@ -9,7 +9,9 @@ spec:
   chart:
     repository: https://charts.jetstack.io
     name: cert-manager
+    version: v0.14.2
   values:
+    installCRDs: true
     ingressShim:
       defaultIssuerName: "letsencrypt-prod"
       defaultIssuerKind: "ClusterIssuer"
