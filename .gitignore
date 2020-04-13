@@ -1,1 +1,3 @@
 rke/rancher-add.sh
+rke/cluster.rkestate
+rke/kube_config_cluster.yml
