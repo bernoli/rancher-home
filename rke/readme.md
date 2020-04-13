@@ -7,6 +7,13 @@ rke up --config cluster.yml
 ./postcluster.sh
 ```
 
+Manual sync
+
+```
+sudo snap install fluxctl --edge
+fluxctl --k8s-fwd-ns fluxcd sync
+```
+
 Tear down
 
 ```
