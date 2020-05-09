@@ -29,7 +29,7 @@ services:
       feature-gates: "EphemeralContainers=true"
       max-pods: 250
 system_images:
-    kubernetes: rancher/hyperkube:v1.17.4-rancher1
+    kubernetes: rancher/hyperkube:v1.17.5-rancher1
 nodes:
   - address: cloud.stackmasters.com
     internal_address: 192.168.178.2
