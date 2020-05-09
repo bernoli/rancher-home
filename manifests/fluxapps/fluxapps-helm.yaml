@@ -8,7 +8,7 @@ spec:
   releaseName: fluxapps
   chart:
     repository: https://charts.fluxcd.io
-    name: fluxcd
+    name: flux
     version: 1.3.0
   values:
     git:
