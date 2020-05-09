@@ -41,3 +41,8 @@ helm upgrade -i helm-operator fluxcd/helm-operator --wait \
 ```
 
 The cluster will self-configure from the content of the `manifests/` folder.
+
+
+Notes:
+
+This PR for cert-manager (https://github.com/jetstack/cert-manager/pull/2775)
