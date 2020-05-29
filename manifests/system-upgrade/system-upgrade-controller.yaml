@@ -47,15 +47,6 @@ spec:
       labels:
         upgrade.cattle.io/controller: system-upgrade-controller
     spec:
-      affinity:
-        nodeAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: node-role.kubernetes.io/master
-                operator: In
-                values:
-                - "true"
       containers:
       - env:
         - name: SYSTEM_UPGRADE_CONTROLLER_NAME
