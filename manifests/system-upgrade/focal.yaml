@@ -32,7 +32,7 @@ spec:
   serviceAccountName: system-upgrade
   secrets:
     - name: focal
-      path: /host/run/system-upgrade/secrets/bionic
+      path: /host/run/system-upgrade/secrets/focal
   drain:
     force: true
   version: focal
