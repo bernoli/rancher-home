@@ -11,15 +11,15 @@ spec:
     name: flux
     version: 1.3.0
   values:
-    nameOverride: fluxdev
-    syncGarbageCollection: true
+    nameOverride: "fluxdev"
+    syncGarbageCollection: "true"
     serviceAccount:
-      name: flux-dev-sa
+      name: "flux-dev-sa"
     clusterRole:
-      create: false
+      create: "false"
     git:
       url: "https://github.com/ams0/flux-dev.git"
-      readonly: true
+      readonly: "true"
       path: "apps"
       pollInterval: "1m"
     sync:
