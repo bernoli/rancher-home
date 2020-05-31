@@ -24,12 +24,16 @@ services:
     extra_args:
 #      encryption-provider-config: "/etc/kubernetes/encryption.yaml"
       feature-gates: "EphemeralContainers=true"
+      oidc-client-id: "spn:5bd13b05-c17a-4589-8a61-f2185ab7831f"
+      oidc-issuer-url: "https://sts.windows.net/a68cdba5-68a4-49a3-8a42-2823316db54f/"
+      oidc-username-claim: oid
+      oidc-groups-claim: groups
   kubelet:
     extra_args:
       feature-gates: "EphemeralContainers=true"
       max-pods: 250
 system_images:
-    kubernetes: rancher/hyperkube:v1.17.5-rancher1
+    kubernetes: rancher/hyperkube:v1.18.3-rancher1
 nodes:
   - address: cloud.stackmasters.com
     internal_address: 192.168.178.2

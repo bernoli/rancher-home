@@ -31,3 +31,20 @@ helm upgrade -i helm-operator fluxcd/helm-operator --wait \
 --set configureRepositories.repositories[0].url=https://kubernetes-charts.storage.googleapis.com \
 --set helm.versions=v3
 
+#Granting kubernetes-admin AAD group cluster-admin role
+#Done via gitops
+#cat <<EOF | kubectl apply --kubeconfig ~/rancher-home/rke/kube_config_cluster.yml -f -
+#apiVersion: rbac.authorization.k8s.io/v1
+#kind: ClusterRoleBinding
+#metadata:
+#  name: rke-cluster-admins
+#roleRef:
+#  apiGroup: rbac.authorization.k8s.io
+#  kind: ClusterRole
+#  name: cluster-admin
+#subjects:
+#- apiGroup: rbac.authorization.k8s.io
+#  kind: Group
+#  name: "3e9b021e-9759-47f3-88af-ee43bfb39f55"
+#EOF
+
