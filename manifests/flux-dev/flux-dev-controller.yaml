@@ -12,7 +12,7 @@ spec:
     version: 1.3.0
   values:
     nameOverride: fluxdev
-    allowedNamespaces: []
+    syncGarbageCollection: true
     serviceAccount:
       name: flux-dev-sa
     clusterRole:

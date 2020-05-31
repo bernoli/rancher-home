@@ -16,6 +16,7 @@ helm upgrade -i flux fluxcd/flux --wait \
 --set sync.state=secret \
 --set git.path=manifests \
 --set git.pollInterval=1m
+--set syncGarbageCollection=true
 
 
 # Install the HelmRelease CRD that contains the helm version field:
