@@ -16,7 +16,7 @@ spec:
     serviceAccount:
       name: "flux-dev-sa"
     clusterRole:
-      create: "false"
+      create: false
     git:
       url: "https://github.com/ams0/flux-dev.git"
       readonly: "true"
