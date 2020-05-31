@@ -1,5 +1,7 @@
 #!/bin/bash
-cp kube_config_cluster.yml ~/.kube/config
+#cp kube_config_cluster.yml ~/.kube/config
+
+export KUBECONFIG=./kube_config_cluster.yml
 
 kubectl create ns fluxcd
 
