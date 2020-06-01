@@ -24,5 +24,3 @@ spec:
       pollInterval: "1m"
       user: "Weave Flux"
       email: "alessandro.vozza@microsoft.com"
-    sync:
-      state: "secret"
