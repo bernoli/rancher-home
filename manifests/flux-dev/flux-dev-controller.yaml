@@ -20,8 +20,9 @@ spec:
       create: false
     git:
       url: "https://github.com/ams0/flux-dev.git"
-      readonly: "true"
       path: "apps"
       pollInterval: "1m"
+      user: "Weave Flux"
+      email: "alessandro.vozza@microsoft.com"
     sync:
       state: "secret"
