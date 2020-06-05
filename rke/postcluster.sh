@@ -15,7 +15,7 @@ helm upgrade -i flux fluxcd/flux --wait \
 --set git.readonly=true \
 --set sync.state=secret \
 --set git.path=manifests \
---set git.pollInterval=1m
+--set git.pollInterval=1m \
 --set syncGarbageCollection=true
 
 
