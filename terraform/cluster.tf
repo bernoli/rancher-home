@@ -62,7 +62,7 @@ resource "rke_cluster" "cluster" {
     ssh_key_path     = "~/.ssh/id_rsa"
 
     labels = {
-      node-role.kubernetes.io / master = ""
+      "node-role.kubernetes.io / master" = ""
     }
   }
 
