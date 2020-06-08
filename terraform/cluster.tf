@@ -15,11 +15,12 @@ resource "rke_cluster" "cluster" {
   }
 
   services {
-    etcd-snapshot {
-      retention      = "3d"
-      interval_hours = "1h"
+    etcd {
+      backup_config {
+        retention      = "3d"
+        interval_hours = "1h"
+      }
     }
-
     kube-controller {
       extra_args = {
         feature-gates = "EphemeralContainers=true"
@@ -61,6 +62,12 @@ resource "rke_cluster" "cluster" {
     role             = ["controlplane", "etcd", "worker"]
     ssh_key_path     = "~/.ssh/id_rsa"
 
+<<<<<<< HEAD
+=======
+    labels = {
+      "node-role.kubernetes.io/master" = ""
+    }
+>>>>>>> 166dd5316308a1aeea1ab957dbc6bb9a7dc14b31
   }
 
   nodes {
