@@ -68,6 +68,44 @@ resource "helm_release" "flux" {
 }
 
 resource "helm_release" "helmoperator_crds" {
-  name  = "helmoperator_crdst"
+  name  = "helmoperator_crds"
   chart = "../charts/helmoperator_crds"
+}
+
+resource "helm_release" "helm-operator" {
+
+  depends_on = resource.helm_release.helmoperator_crds
+
+  name       = "helm-operator"
+  repository = data.helm_repository.flux.metadata[0].name
+  namespace  = "fluxcd"
+  chart      = "fluxcd/helm-operator"
+  version    = "1.3.0"
+
+  set {
+    name  = "helm.versions"
+    value = "3"
+  }
+
+  set {
+    name  = "configureRepositories.repositories[0].url"
+    value = "https://kubernetes-charts.storage.googleapis.com"
+  }
+
+  set {
+    name  = "configureRepositories.repositories[0].name"
+    value = "stable"
+  }
+
+
+  set {
+    name  = "configureRepositories.enable"
+    value = "true"
+  }
+
+  set {
+    name  = "git.ssh.secretName"
+    value = "flux-git-deploy"
+  }
+
 }
