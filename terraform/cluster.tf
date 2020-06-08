@@ -17,11 +17,11 @@ resource "rke_cluster" "cluster" {
   services {
     etcd {
       backup_config {
-        retention      = "3d"
-        interval_hours = "1h"
+        retention      = "3"
+        interval_hours = "12"
       }
     }
-    kube-controller {
+    kube_controller {
       extra_args = {
         feature-gates = "EphemeralContainers=true"
       }
@@ -34,13 +34,13 @@ resource "rke_cluster" "cluster" {
     }
 
     kubelet {
-      max-pods = 250
+      #   max-pods = 250
       extra_args = {
         feature-gates = "EphemeralContainers=true"
       }
     }
 
-    kube-api {
+    kube_api {
       secrets_encryption_config {
         enabled = true
       }
@@ -95,6 +95,6 @@ resource "rke_cluster" "cluster" {
   }
 
   system_images {
-    kubernetes = ["rancher/hyperkube:v1.18.3-rancher1"]
+    kubernetes = "rancher/hyperkube:v1.18.3-rancher1"
   }
 }
