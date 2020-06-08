@@ -62,16 +62,16 @@ resource "helm_release" "flux" {
   }
 }
 
-resource "helm_release" "helmoperator_crds" {
-  name       = "helmoperator_crds"
+resource "helm_release" "helmoperatorcrds" {
+  name       = "helmoperatorcrds"
   repository = "../charts/"
-  chart      = "helmoperator_crds"
+  chart      = "helmoperatorcrds"
 }
 
 resource "helm_release" "helm-operator" {
 
   depends_on = [
-    helm_release.helmoperator_crds,
+    helm_release.helmoperatorcrds,
   ]
 
   name       = "helm-operator"
