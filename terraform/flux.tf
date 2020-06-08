@@ -24,15 +24,9 @@ resource "kubernetes_namespace" "fluxcd" {
   }
 }
 
-
-data "helm_repository" "flux" {
-  name = "flux"
-  url  = "https://charts.fluxcd.io"
-}
-
 resource "helm_release" "flux" {
   name       = "flux"
-  repository = data.helm_repository.flux.metadata[0].name
+  repository = "https://charts.fluxcd.io"
   namespace  = "fluxcd"
   chart      = "fluxcd/flux"
   version    = "1.3.0"
