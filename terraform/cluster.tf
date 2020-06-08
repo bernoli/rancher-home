@@ -61,13 +61,6 @@ resource "rke_cluster" "cluster" {
     user             = "alessandro"
     role             = ["controlplane", "etcd", "worker"]
     ssh_key_path     = "~/.ssh/id_rsa"
-
-<<<<<<< HEAD
-=======
-    labels = {
-      "node-role.kubernetes.io/master" = ""
-    }
->>>>>>> 166dd5316308a1aeea1ab957dbc6bb9a7dc14b31
   }
 
   nodes {
