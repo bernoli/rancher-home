@@ -1,5 +1,5 @@
 apiVersion: v2
-name: helmoperator_crds
+name: helmoperatorcrds
 description: A Helm chart to deploy Helm Operator CRDs
 
 # A chart can be either an 'application' or a 'library' chart.
