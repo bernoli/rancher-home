@@ -34,9 +34,9 @@ resource "rke_cluster" "cluster" {
     }
 
     kubelet {
-      #   max-pods = 250
       extra_args = {
         feature-gates = "EphemeralContainers=true"
+        max-pods = 250
       }
     }
 
