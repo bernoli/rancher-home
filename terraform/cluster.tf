@@ -46,7 +46,7 @@ resource "rke_cluster" "cluster" {
       }
       extra_args = {
         feature-gates              = "EphemeralContainers=true"
-        encryption-provider-config = "/etc/kubernetes/encryption.yaml"
+       #encryption-provider-config = "/etc/kubernetes/encryption.yaml"
         oidc-client-id             = "spn:5bd13b05-c17a-4589-8a61-f2185ab7831f"
         oidc-issuer-url            = "https://sts.windows.net/a68cdba5-68a4-49a3-8a42-2823316db54f/"
         oidc-username-claim        = "oid"
