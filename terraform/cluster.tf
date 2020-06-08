@@ -80,7 +80,7 @@ resource "rke_cluster" "cluster" {
   }
 
   nodes {
-    address          = "nuc1"
+    address          = "box"
     internal_address = "192.168.178.9"
     user             = "alessandro"
     role             = ["worker"]
