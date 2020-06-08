@@ -81,7 +81,7 @@ resource "helm_release" "helm-operator" {
 
   set {
     name  = "helm.versions"
-    value = "3"
+    value = "v3"
   }
 
   set {
