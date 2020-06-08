@@ -58,14 +58,16 @@ resource "helm_release" "flux" {
   }
 
   set {
-    name  = "syncGarbageCollection"
+    name  = "syncGarbageCollection.enabled"
     value = "true"
   }
 }
 
 resource "helm_release" "helmoperator_crds" {
-  name  = "helmoperator_crds"
-  chart = "../charts/helmoperator_crds"
+  name       = "helmoperator_crds"
+  repository = "../charts/helmoperator_crds"
+  chart      = "helmoperator_crds"
+  version    = "0.1.0"
 }
 
 resource "helm_release" "helm-operator" {
