@@ -62,7 +62,7 @@ services {
     ssh_key_path = "~/.ssh/id_rsa"
 
     labels = {
-      node-role.kubernetes.io/master= = ""
+      node-role.kubernetes.io/master =  ""
     }
   }
 
@@ -91,7 +91,7 @@ services {
   }
 
 authentication {
-    strategy: "x509"
+    strategy = "x509"
     sans = [
         "nas.stackmasters.com"
     ]
