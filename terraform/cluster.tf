@@ -97,6 +97,6 @@ authentication {
     ]
 }
 
-system_images = [
+system_images {
     kubernetes = ["rancher/hyperkube:v1.18.3-rancher1"]
-]
+}
