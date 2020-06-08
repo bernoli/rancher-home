@@ -29,7 +29,6 @@ resource "helm_release" "flux" {
   repository = "https://charts.fluxcd.io"
   namespace  = "fluxcd"
   chart      = "fluxcd/flux"
-  version    = "1.3.0"
 
   set {
     name  = "git.url"
@@ -65,9 +64,8 @@ resource "helm_release" "flux" {
 
 resource "helm_release" "helmoperator_crds" {
   name       = "helmoperator_crds"
-  repository = "../charts/helmoperator_crds"
+  repository = "../charts/"
   chart      = "helmoperator_crds"
-  version    = "0.1.0"
 }
 
 resource "helm_release" "helm-operator" {
@@ -80,7 +78,6 @@ resource "helm_release" "helm-operator" {
   repository = "https://charts.fluxcd.io"
   namespace  = "fluxcd"
   chart      = "fluxcd/helm-operator"
-  version    = "1.3.0"
 
   set {
     name  = "helm.versions"
