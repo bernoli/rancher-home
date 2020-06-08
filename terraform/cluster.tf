@@ -60,7 +60,6 @@ resource "rke_cluster" "cluster" {
     internal_address = "192.168.178.2"
     user             = "alessandro"
     role             = ["controlplane", "etcd", "worker"]
-    ssh_key_path     = "~/.ssh/id_rsa"
   }
 
   nodes {
@@ -68,7 +67,6 @@ resource "rke_cluster" "cluster" {
     internal_address = "192.168.178.5"
     user             = "alessandro"
     role             = ["worker"]
-    ssh_key_path     = "~/.ssh/id_rsa"
   }
 
   nodes {
@@ -76,7 +74,6 @@ resource "rke_cluster" "cluster" {
     internal_address = "192.168.178.6"
     user             = "alessandro"
     role             = ["worker"]
-    ssh_key_path     = "~/.ssh/id_rsa"
   }
 
   nodes {
@@ -84,7 +81,6 @@ resource "rke_cluster" "cluster" {
     internal_address = "192.168.178.9"
     user             = "alessandro"
     role             = ["worker"]
-    ssh_key_path     = "~/.ssh/id_rsa"
   }
 
   authentication {
@@ -95,6 +91,6 @@ resource "rke_cluster" "cluster" {
   }
 
   system_images {
-    kubernetes = "rancher/hyperkube:v1.18.3-rancher1"
+    kubernetes = "rancher/hyperkube:v1.17.5-rancher1-1"
   }
 }
