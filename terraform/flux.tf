@@ -19,7 +19,9 @@ provider kubernetes {
 }
 
 resource "kubernetes_namespace" "fluxcd" {
-  name = "fluxcd"
+  metadata {
+    name = "fluxcd"
+  }
 }
 
 
@@ -74,7 +76,9 @@ resource "helm_release" "helmoperator_crds" {
 
 resource "helm_release" "helm-operator" {
 
-  depends_on = [resource.helm_release.helmoperator_crds]
+  depends_on = [
+    helm_release.helmoperator_crds,
+  ]
 
   name       = "helm-operator"
   repository = data.helm_repository.flux.metadata[0].name
