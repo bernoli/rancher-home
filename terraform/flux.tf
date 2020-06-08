@@ -77,7 +77,7 @@ resource "helm_release" "helm-operator" {
   ]
 
   name       = "helm-operator"
-  repository = data.helm_repository.flux.metadata[0].name
+  repository = "https://charts.fluxcd.io"
   namespace  = "fluxcd"
   chart      = "fluxcd/helm-operator"
   version    = "1.3.0"
