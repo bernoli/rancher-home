@@ -1,4 +1,4 @@
 resource "local_file" "kube_cluster_yaml" {
-  filename = "~/.kube/config"
+  filename = "kubeconfig.yaml"
   content  = rke_cluster.cluster.kube_config_yaml
 }
