@@ -91,6 +91,6 @@ resource "rke_cluster" "cluster" {
   }
 
   system_images {
-    kubernetes = "rancher/hyperkube:v1.17.5-rancher1-1"
+    kubernetes = "rancher/hyperkube:v1.17.5-rancher1"
   }
 }
