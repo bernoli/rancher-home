@@ -1,8 +1,8 @@
 cluster_name: rancher-home
 ssh_key_path: /home/alessandro/.ssh/id_rsa
-enable_cluster_alerting: true
-enable_cluster_monitoring: true
-enable_network_policy: true
+#enable_cluster_alerting: true
+#enable_cluster_monitoring: true
+#enable_network_policy: true
 ignore_docker_version: true
 ingress:
   provider: none
@@ -39,22 +39,18 @@ nodes:
     internal_address: 192.168.178.2
     user: alessandro
     role: [controlplane,etcd,worker]
-    ssh_key_path: ~/.ssh/id_rsa
   - address: nuc1
     internal_address: 192.168.178.5
     user: alessandro
     role: [worker]
-    ssh_key_path: ~/.ssh/id_rsa
   - address: nuc2
     internal_address: 192.168.178.6
     user: alessandro
     role: [worker]
-    ssh_key_path: ~/.ssh/id_rsa
   - address: box
     internal_address: 192.168.178.9
     user: alessandro
     role: [worker]
-    ssh_key_path: ~/.ssh/id_rsa
 authentication:
     strategy: x509
     sans:

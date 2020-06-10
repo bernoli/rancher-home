@@ -1,5 +1,8 @@
 provider "helm" {
   kubernetes {
+    load_config_file = "false"
+
+
     host     = rke_cluster.cluster.api_server_url
     username = rke_cluster.cluster.kube_admin_user
 
@@ -10,6 +13,9 @@ provider "helm" {
 }
 
 provider kubernetes {
+  load_config_file = "false"
+
+
   host     = rke_cluster.cluster.api_server_url
   username = rke_cluster.cluster.kube_admin_user
 
@@ -24,6 +30,19 @@ resource "kubernetes_namespace" "fluxcd" {
   }
 }
 
+resource "kubernetes_secret" "flux-ssh" {
+  metadata {
+    name      = "flux-ssh"
+    namespace = kubernetes_namespace.fluxcd.metadata.0.name
+  }
+  data = {
+    identity = tls_private_key.flux-deploy-key.private_key_pem
+  }
+}
+
+
+
+
 resource "helm_release" "flux" {
   name       = "flux"
   repository = "https://charts.fluxcd.io"
@@ -32,17 +51,20 @@ resource "helm_release" "flux" {
 
   set {
     name  = "git.url"
-    value = "https://github.com/ams0/rancher-home.git"
+    value = "git@github.com:ams0/rancher-home"
   }
 
   set {
     name  = "git.readonly"
-    value = "true"
+    value = "false"
   }
-
+  set {
+    name  = "git.secretName"
+    value = "flux-ssh"
+  }
   set {
     name  = "sync.state"
-    value = "secret"
+    value = "git"
   }
 
 
@@ -102,7 +124,7 @@ resource "helm_release" "helm-operator" {
 
   set {
     name  = "git.ssh.secretName"
-    value = "flux-git-deploy"
+    value = "flux-ssh"
   }
 
 }
