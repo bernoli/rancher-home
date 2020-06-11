@@ -2,6 +2,10 @@ provider "azuread" {
   tenant_id = "a68cdba5-68a4-49a3-8a42-2823316db54f"
 }
 
+data "azuread_user" "alessandro" {
+  user_principal_name = "alessandro@cookingwithazure.com"
+}
+
 data "azuread_group" "kubernetes-admin" {
   name = "kubernetes-admin"
 }
@@ -22,6 +26,8 @@ resource "kubernetes_cluster_role_binding" "rke-cluster-admins" {
   }
 }
 
+#need to parametrize the below (specially, objid of user)
+#https://stackoverflow.com/questions/58006272/how-to-create-a-file-with-terrafom-and-include-variable-as-literal
 locals {
   kubeconfig_aad = <<-EOT
 apiVersion: v1
@@ -34,13 +40,13 @@ contexts:
 - context:
     cluster: rkeaad
     namespace: default
-    user: 404f30c4-903f-49f4-9aa6-1f909e25747f
+    user: ${data.azuread_user.alessandro.id}
   name: rkeaad
 current-context: rkeaad
 kind: Config
 preferences: {}
 users:
-- name: 404f30c4-903f-49f4-9aa6-1f909e25747f
+- name: ${data.azuread_user.alessandro.id}
   user:
     auth-provider:
       config:
