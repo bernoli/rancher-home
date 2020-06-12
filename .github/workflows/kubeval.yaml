@@ -1,13 +1,17 @@
 name: CI
 
 on:
-  pull_request:
-    paths:
-    - 'manifests/**'
   push:
+    branches:
+        - master
+      paths:
+        - 'manifests/**'
+  pull_request:
+    branches:
+      - master
     paths:
-    - 'manifests/**'
-
+      - 'manifests/**'
+    
 jobs:
   kubeval:
     runs-on: ubuntu-latest
