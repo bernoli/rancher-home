@@ -3,14 +3,14 @@ name: CI
 on:
   push:
     branches:
-        - master
-      paths:
-        - 'manifests/**'
+    - master
+    paths:
+    - 'manifests/**'
   pull_request:
     branches:
-      - master
+    - master
     paths:
-      - 'manifests/**'
+    - 'manifests/**'
     
 jobs:
   kubeval:
