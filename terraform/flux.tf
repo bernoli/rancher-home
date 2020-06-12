@@ -40,47 +40,19 @@ resource "kubernetes_secret" "flux-ssh" {
   }
 }
 
-
-
-
 resource "helm_release" "flux" {
   name       = "flux"
   repository = "https://charts.fluxcd.io"
   namespace  = "fluxcd"
   chart      = "flux"
 
-  set {
-    name  = "git.url"
-    value = "git@github.com:ams0/rancher-home"
-  }
+  dynamic "set" {
+    for_each = local.flux_values
 
-  set {
-    name  = "git.readonly"
-    value = "false"
-  }
-  set {
-    name  = "git.secretName"
-    value = "flux-ssh"
-  }
-  set {
-    name  = "sync.state"
-    value = "git"
-  }
-
-
-  set {
-    name  = "git.path"
-    value = "manifests"
-  }
-
-  set {
-    name  = "git.pollInterval"
-    value = "1m"
-  }
-
-  set {
-    name  = "syncGarbageCollection.enabled"
-    value = "true"
+    content {
+      name                 = set.key
+      value               = set.value
+    }
   }
 }
 
@@ -101,30 +73,12 @@ resource "helm_release" "helm-operator" {
   namespace  = "fluxcd"
   chart      = "helm-operator"
 
-  set {
-    name  = "helm.versions"
-    value = "v3"
+  dynamic "set" {
+    for_each = local.helmoperator_values
+
+    content {
+      name                 = set.key
+      value               = set.value
+    }
   }
-
-  set {
-    name  = "configureRepositories.repositories[0].url"
-    value = "https://kubernetes-charts.storage.googleapis.com"
-  }
-
-  set {
-    name  = "configureRepositories.repositories[0].name"
-    value = "stable"
-  }
-
-
-  set {
-    name  = "configureRepositories.enable"
-    value = "true"
-  }
-
-  set {
-    name  = "git.ssh.secretName"
-    value = "flux-ssh"
-  }
-
 }
