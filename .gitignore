@@ -38,3 +38,4 @@ terraform.rc
 
 
 kubeconfig.yaml
+terraform/kubeconfig_aad.yaml
