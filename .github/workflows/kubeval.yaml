@@ -1,9 +1,11 @@
 name: CI
 
 on: [push, pull_request]
+    paths:
+    - 'manifests/**'
 
 jobs:
-  test-action:
+  kubeval:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
