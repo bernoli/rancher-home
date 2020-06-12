@@ -1,6 +1,6 @@
 resource "rke_cluster" "cluster" {
 
-  cluster_name = "rancher-home"
+  cluster_name = var.cluster-name
   ssh_key_path = "/home/alessandro/.ssh/id_rsa"
 
   ignore_docker_version = true
