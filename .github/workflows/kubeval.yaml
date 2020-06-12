@@ -1,8 +1,12 @@
 name: CI
 
-on: [push, pull_request]
-  paths:
-  - 'manifests/**'
+on:
+  pull_request:
+    paths:
+        - 'manifests/**'
+  push:
+    paths:
+    - 'manifests/**'
 
 jobs:
   kubeval:
