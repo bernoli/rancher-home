@@ -1,0 +1,14 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  test-action:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Validate manifests
+        uses: stefanprodan/kube-tools@v1
+          command: |
+            echo "Validating manifests"
+            kubeval -d manifests/
