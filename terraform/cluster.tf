@@ -1,3 +1,4 @@
+# Creates a RKE cluster
 resource "rke_cluster" "cluster" {
 
   cluster_name = var.cluster-name
@@ -62,25 +63,15 @@ resource "rke_cluster" "cluster" {
     role             = ["controlplane", "etcd", "worker"]
   }
 
-  nodes {
-    address          = "nuc1"
-    internal_address = "192.168.178.5"
-    user             = "alessandro"
-    role             = ["worker"]
-  }
+  dynamic "nodes" {
+    for_each = local.nodes
 
-  nodes {
-    address          = "nuc2"
-    internal_address = "192.168.178.6"
-    user             = "alessandro"
-    role             = ["worker"]
-  }
-
-  nodes {
-    address          = "box"
-    internal_address = "192.168.178.9"
-    user             = "alessandro"
-    role             = ["worker"]
+    content {
+      address                 = nodes.key
+      internal_address        = nodes.value
+      user             = "alessandro"
+      role             = ["worker"]
+    }
   }
 
   authentication {
