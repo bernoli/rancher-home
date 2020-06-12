@@ -18,4 +18,4 @@ jobs:
         with:
           command: |
             echo "Validating manifests"
-            kubeval -d manifests/
+            kubeval --ignore-missing-schemas -d manifests/
