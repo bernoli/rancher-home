@@ -46,6 +46,7 @@ resource "helm_release" "flux" {
   namespace  = "fluxcd"
   chart      = "flux"
 
+#https://www.hashicorp.com/blog/hashicorp-terraform-0-12-preview-for-and-for-each/
   dynamic "set" {
     for_each = local.flux_values
 
@@ -73,6 +74,7 @@ resource "helm_release" "helm-operator" {
   namespace  = "fluxcd"
   chart      = "helm-operator"
 
+#https://www.hashicorp.com/blog/hashicorp-terraform-0-12-preview-for-and-for-each/
   dynamic "set" {
     for_each = local.helmoperator_values
 
