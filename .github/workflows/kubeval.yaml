@@ -22,4 +22,4 @@ jobs:
         with:
           command: |
             echo "Validating manifests"
-            kubeval --additional-schema-locations https://raw.githubusercontent.com/ams0/kubernetes-json-schema/master/ -d manifests/
+            kubeval --additional-schema-locations https://raw.githubusercontent.com/ams0/kubernetes-json-schema/master -d manifests/
