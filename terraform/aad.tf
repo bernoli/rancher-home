@@ -1,5 +1,7 @@
+#Sets up a Cluster role binding to grant a specific AAD group cluster-admin role and creates a generic kubeconfig for AAD auth
+
 provider "azuread" {
-  tenant_id = "a68cdba5-68a4-49a3-8a42-2823316db54f"
+  tenant_id = var.tenant_id
 }
 
 data "azuread_user" "alessandro" {
@@ -26,15 +28,13 @@ resource "kubernetes_cluster_role_binding" "rke-cluster-admins" {
   }
 }
 
-#need to parametrize the below (specially, objid of user)
-#https://stackoverflow.com/questions/58006272/how-to-create-a-file-with-terrafom-and-include-variable-as-literal
 locals {
   kubeconfig_aad = <<-EOT
 apiVersion: v1
 clusters:
 - cluster:
     certificate-authority-data: ${base64encode(rke_cluster.cluster.ca_crt)}
-    server: https://cloud.stackmasters.com:6443
+    server: https://${var.endpoint}:6443
   name: rkeaad
 contexts:
 - context:
@@ -50,10 +50,10 @@ users:
   user:
     auth-provider:
       config:
-        apiserver-id: 5bd13b05-c17a-4589-8a61-f2185ab7831f
-        client-id: 009ed4ad-ce28-45b9-b1ec-e515fd4e3d25
+        apiserver-id: ${var.apiserver-id}
+        client-id: ${var.client_id}
         environment: AzurePublicCloud
-        tenant-id: a68cdba5-68a4-49a3-8a42-2823316db54f
+        tenant-id: ${var.tenant_id}
       name: azure
   EOT
 }
