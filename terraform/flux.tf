@@ -1,3 +1,6 @@
+# Deploys Flux controller https://github.com/fluxcd/flux/tree/master/chart/flux and Helm Operator https://github.com/fluxcd/helm-operator
+# Points flux to https://github.com/ams0/rancher-home/tree/master/manifests
+
 provider "helm" {
   kubernetes {
     load_config_file = "false"

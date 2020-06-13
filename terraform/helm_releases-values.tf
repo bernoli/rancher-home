@@ -1,3 +1,4 @@
+# Values to deploy the flux controller and the helm operator via the helm terraform profider (see flux.tf)
 locals {
   flux_values = {
     "git.url"   = "git@github.com:${var.org}/${var.repo}"

@@ -1,3 +1,4 @@
+# Creates a public/private keypair, store the private as a kubernetes secrets that will be used by flux, and uploads the public part to Github as deploy key
 provider "github" {
   organization = "ams0"
   individual   = false
