@@ -1,3 +1,7 @@
+output "cluster_name" {
+    value = rke_cluster.cluster.cluster_name
+}
+
 output "api_server_url" {
     value = rke_cluster.cluster.api_server_url
 }

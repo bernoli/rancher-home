@@ -31,6 +31,7 @@ resource "kubernetes_namespace" "fluxcd" {
   metadata {
     name = "fluxcd"
   }
+    depends_on = [module.cluster[0].cluster_name]
 }
 
 resource "kubernetes_secret" "flux-ssh" {

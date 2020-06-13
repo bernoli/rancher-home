@@ -26,6 +26,7 @@ resource "kubernetes_cluster_role_binding" "rke-cluster-admins" {
     name      = data.azuread_group.kubernetes-admin.id
     api_group = "rbac.authorization.k8s.io"
   }
+  depends_on = [module.cluster[0].cluster_name]
 }
 
 locals {
