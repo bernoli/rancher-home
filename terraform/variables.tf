@@ -1,13 +1,3 @@
-variable "cluster-name" {
-  description = " Cluster Name"
-  default = "rancher-home"
-}
-
-variable "kubernetes-version" {
-  description = " Version of hyperkube from https://hub.docker.com/r/rancher/hyperkube/tags"
-  default = "v1.17.5-rancher1"
-}
-
 variable "org" {
   description = "Github org"
   default = "ams0"

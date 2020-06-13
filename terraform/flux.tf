@@ -6,12 +6,12 @@ provider "helm" {
     load_config_file = "false"
 
 
-    host     = rke_cluster.cluster.api_server_url
-    username = rke_cluster.cluster.kube_admin_user
+    host     = module.cluster.api_server_url
+    username = module.cluster.kube_admin_user
 
-    client_certificate     = rke_cluster.cluster.client_cert
-    client_key             = rke_cluster.cluster.client_key
-    cluster_ca_certificate = rke_cluster.cluster.ca_crt
+    client_certificate     = module.cluster.client_cert
+    client_key             = module.cluster.client_key
+    cluster_ca_certificate = module.cluster.ca_crt
   }
 }
 
@@ -19,12 +19,12 @@ provider kubernetes {
   load_config_file = "false"
 
 
-  host     = rke_cluster.cluster.api_server_url
-  username = rke_cluster.cluster.kube_admin_user
+  host     = module.cluster.api_server_url
+  username = module.cluster.kube_admin_user
 
-  client_certificate     = rke_cluster.cluster.client_cert
-  client_key             = rke_cluster.cluster.client_key
-  cluster_ca_certificate = rke_cluster.cluster.ca_crt
+  client_certificate     = module.cluster.client_cert
+  client_key             = module.cluster.client_key
+  cluster_ca_certificate = module.cluster.ca_crt
 }
 
 resource "kubernetes_namespace" "fluxcd" {
