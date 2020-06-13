@@ -33,7 +33,7 @@ locals {
 apiVersion: v1
 clusters:
 - cluster:
-    certificate-authority-data: ${base64encode(module.cluster.ca_crt)}
+    certificate-authority-data: ${base64encode(module.cluster[0].ca_crt)}
     server: https://${var.endpoint}:6443
   name: rkeaad
 contexts:

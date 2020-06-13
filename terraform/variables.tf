@@ -1,3 +1,8 @@
+variable "cluster_type" {
+  description = "Cluster type, aks or rke"
+  default = "rke"
+}
+
 variable "org" {
   description = "Github org"
   default = "ams0"
