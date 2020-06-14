@@ -13,7 +13,7 @@ variable "tenant_id" {
   default = "a68cdba5-68a4-49a3-8a42-2823316db54f"
 }
 
-variable "apiserver-id" {
+variable "aadserverapp_id" {
   description = "AppID for AAD server app"
   default = "5bd13b05-c17a-4589-8a61-f2185ab7831f"
 }

@@ -6,12 +6,12 @@ provider "helm" {
     load_config_file = "false"
 
 
-    host     = module.cluster[0].api_server_url
-    username = module.cluster[0].kube_admin_user
+    host     = var.api_server_url
+    username = var.kube_admin_user
 
-    client_certificate     = module.cluster[0].client_cert
-    client_key             = module.cluster[0].client_key
-    cluster_ca_certificate = module.cluster[0].ca_crt
+    client_certificate     = var.client_cert
+    client_key             = var.client_key
+    cluster_ca_certificate = var.ca_crt
   }
 }
 
@@ -19,19 +19,20 @@ provider kubernetes {
   load_config_file = "false"
 
 
-  host     = module.cluster[0].api_server_url
-  username = module.cluster[0].kube_admin_user
+  host     = var.api_server_url
+  username = var.kube_admin_user
 
-  client_certificate     = module.cluster[0].client_cert
-  client_key             = module.cluster[0].client_key
-  cluster_ca_certificate = module.cluster[0].ca_crt
+  client_certificate     = var.client_cert
+  client_key             = var.client_key
+  cluster_ca_certificate = var.ca_crt
 }
 
 resource "kubernetes_namespace" "fluxcd" {
   metadata {
     name = "fluxcd"
   }
-    depends_on = [module.cluster[0].cluster_name]
+    depends_on = [var.namespace_depends_on]
+
 }
 
 resource "kubernetes_secret" "flux-ssh" {
@@ -40,8 +41,10 @@ resource "kubernetes_secret" "flux-ssh" {
     namespace = kubernetes_namespace.fluxcd.metadata.0.name
   }
   data = {
-    identity = tls_private_key.flux-deploy-key.private_key_pem
+    identity = var.identity
   }
+
+    depends_on = [var.secret_depends_on]
 }
 
 resource "helm_release" "flux" {
