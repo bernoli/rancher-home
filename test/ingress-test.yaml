@@ -37,10 +37,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - nginx.stackmasters.com
+    - auth.nginx.stackmasters.com
     secretName: nginx-stackmasters-com
   rules:
-   - host: nginx.stackmasters.com
+   - host: auth.nginx.stackmasters.com
      http:
        paths:
        - backend:
