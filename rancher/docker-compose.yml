@@ -5,19 +5,10 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    command: --no-cacerts
+    command: --acme-domain rancher.stackmasters.com
     restart: unless-stopped
     volumes:
       - type: bind 
-        source: /etc/letsencrypt/archive/rancher.stackmasters.com/fullchain1.pem
-        target: /etc/rancher/ssl/cert.pem
-        read_only: true
-      - type: bind 
-        source: /etc/letsencrypt/archive/rancher.stackmasters.com/privkey1.pem
-        target: /etc/rancher/ssl/key.pem
-        read_only: true
-      - type: bind 
         source: /root/rancher/data 
         target: /var/lib/rancher
-    environment:
-      - SSL_CERT_DIR="/etc/rancher/ssl
+
