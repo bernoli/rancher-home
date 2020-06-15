@@ -78,6 +78,7 @@ resource "helm_release" "helm-operator" {
 
   name       = "helm-operator"
   repository = "https://charts.fluxcd.io"
+  #we could use create_namespace = true, but the secret needs to be created first before the helm release
   namespace  = "fluxcd"
   chart      = "helm-operator"
 
