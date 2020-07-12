@@ -48,10 +48,18 @@ nodes:
     internal_address: 192.168.178.6
     user: alessandro
     role: [worker]
-  - address: box
-    internal_address: 192.168.178.9
-    user: alessandro
+  - address: hp01
+    internal_address: 192.168.178.30
+    user: ubuntu
     role: [worker]
+  - address: hp02
+    internal_address: 192.168.178.31
+    user: ubuntu
+    role: [worker]
+    #  - address: box
+    #internal_address: 192.168.178.9
+    #user: alessandro
+    #role: [worker]
 authentication:
     strategy: x509
     sans:

@@ -1,3 +1,5 @@
+#sudo apt-get install python-docker
+#sudo ln -sf /usr/bin/python3 /usr/bin/python to avoid the cannot import docker module error
 - hosts: rke 
 
   tasks:
