@@ -33,7 +33,7 @@ services:
       feature-gates: "EphemeralContainers=true"
       max-pods: 250
 system_images:
-    kubernetes: rancher/hyperkube:v1.18.3-rancher1
+    kubernetes: rancher/hyperkube:v1.18.6-rancher1
 nodes:
   - address: cloud.stackmasters.com
     port: 2223
