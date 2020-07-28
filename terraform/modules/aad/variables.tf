@@ -26,6 +26,10 @@ variable "tenant_id" {
   description = "Tenant ID for AAD auth"
 }
 
+variable "subscription_id" {
+  description = "Subscription ID for AAD auth, mostly useless"
+}
+
 variable "ca_crt" {
   description = "CA certifcate"
 }

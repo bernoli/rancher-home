@@ -1,7 +1,8 @@
 #Sets up a Cluster role binding to grant a specific AAD group cluster-admin role and creates a generic kubeconfig for AAD auth
 
 provider "azuread" {
-  tenant_id = var.tenant_id
+  tenant_id       = var.tenant_id
+  subscription_id = var.subscription_id #becouse of https://github.com/terraform-providers/terraform-provider-azuread/issues/294
 }
 
 data "azuread_user" "aadadmin" {
@@ -38,7 +39,7 @@ resource "kubernetes_cluster_role_binding" "rke-cluster-admins" {
     name      = data.azuread_group.kubernetes-admin.id
     api_group = "rbac.authorization.k8s.io"
   }
-    depends_on = [var.aad_depends_on]
+  depends_on = [var.aad_depends_on]
 }
 
 locals {

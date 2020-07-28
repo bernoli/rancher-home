@@ -59,6 +59,7 @@ resource "rke_cluster" "cluster" {
   nodes {
     address          = "cloud.stackmasters.com"
     internal_address = "192.168.178.2"
+    port = "2223"
     user             = "alessandro"
     role             = ["controlplane", "etcd", "worker"]
   }

@@ -27,6 +27,10 @@ variable "username" {
   description = "AAD user"
 }
 
+variable "subscription_id" {
+  description = "Subscription ID for AAD auth, mostly useless"
+}
+
 variable "domain" {
   description = "AAD user"
 }
